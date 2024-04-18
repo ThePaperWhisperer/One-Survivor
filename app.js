@@ -164,24 +164,6 @@ document.getElementById("universe").hidden = true;
 document.getElementById("text").hidden = true;
 document.body.style.background = "black";
 
-document.getElementById("ok").onclick = async () => {
-
-	document.getElementById("dialog").hidden = true;
-	document.body.style.background = "url(sky.jpg)";
-	var {value: room} = await Queue.fire({currentProgressStep: 0,input: "text", text:"Choose a private room name."});
-	if(room){
-	var {value: password} = await Queue.fire({currentProgressStep: 1,input: "text", text:"Choose a password."});
-	}
-	var {value: username} = await Queue.fire({currentProgressStep: 2,input: "text", text:"Choose an username!"});
-	
-	intro.hidden = false;
-		intro.play();
-		intro.onended = ()=> {
-			intro.hidden = true;
-			document.getElementById("heli").pause();
-			load();
-		};
-};
 
 document.getElementById("neither").onclick = async () => {
 	document.getElementById("dialog").hidden = true;
@@ -206,25 +188,7 @@ document.getElementById("neither").onclick = async () => {
 
 	
 };
-document.getElementById("no").onclick = async () => {
-	document.getElementById("dialog").hidden = true;
-	document.body.style.background = "url(sky.jpg)";
-	var {value:roomname} = await Queue.fire({currentProgressStep: 0,input: "text", text:"Enter the room name."});
-	if(roomname){
-	var {value: pass} = await Queue.fire({currentProgressStep: 1,input: "text", text:"Enter the room's password."});
-	}
-	var {value: username} = await Queue.fire({currentProgressStep: 2,input: "text", text:"Choose an username!"});
-	
 
-	intro.hidden = false;
-	intro.play();
-	intro.onended = ()=> {
-		intro.hidden = true;
-		document.getElementById("heli").pause();
-		load();
-	};
-	
-}
 
 
 var t;
